@@ -1,0 +1,8 @@
+# gitignore file
+prompts/
+# brainstorming visual companion
+.superpowers/
+ui-ux-pro-max/
+
+#misc
+.env
