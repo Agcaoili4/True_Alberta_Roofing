@@ -8,3 +8,4 @@ instead of editing history.
 - [0002](0002-sanity-cms-for-gallery.md) — Sanity for the gallery instead of a custom admin
 - [0003](0003-no-auth-no-db-for-mvp.md) — no auth, no database for the MVP
 - [0004](0004-visual-design-direction.md) — visual direction
+- [0005](0005-home-flow-mirrors-trueflight.md) — home flow mirrors trueflight.ca

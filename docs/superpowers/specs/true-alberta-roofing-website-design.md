@@ -8,14 +8,9 @@ Working mode is mentor: I write the code, guidance explains the reasoning and re
 
 ## What we're building
 
-A lead-gen site for True Alberta Roofing, a family-owned Alberta company moving from
-subcontracting to selling and installing on their own. They do asphalt shingles and custom
-standing seam metal.
+A lead-gen site for True Alberta Roofing, a family-owned Alberta company moving from subcontracting to selling and installing on their own. They do asphalt shingles and custom standing seam metal.
 
-The only metric that matters is free estimate requests. Everything on the site points at
-that. The brand should feel original (not a template), smooth to scroll, and lean on the
-family angle and 20+ years of experience. Client's reference for the vibe was
-trueflight.ca — concept, not a copy.
+The only metric that matters is free estimate requests. Everything on the site points at that. The brand should feel original (not a template), smooth to scroll, and lean on the family angle and 20+ years of experience. Client's reference for the vibe was trueflight.ca — concept, not a copy.
 
 ## Scope
 
@@ -54,7 +49,12 @@ docs/       specs, architecture, ADRs
 
 Pages:
 
-- `/` — Hero, Services, why-us/family, gallery preview, how-it-works, testimonials, CTA, footer
+- `/` — home flow not final. Two candidate mockups are in `docs/mockups/` for the owner to
+  choose from (see ADR-0005):
+  - Version A (original): hero, services, why-us/family, gallery preview, process,
+    testimonials, CTA, footer.
+  - Version B (TrueFlight-matched): promo/offer bar, hero mission tagline, value prop + two
+    services, "why trust us" grid + CTA, before/after portfolio, repeated CTA, footer with hours.
 - `/services` — asphalt and standing seam, in detail
 - `/gallery` — full before/after grid from Sanity
 - `/about` — the family and the 20 years
@@ -167,3 +167,4 @@ Small steps, each one runnable before the next:
 - ADR-0002 — Sanity instead of a custom admin
 - ADR-0003 — no auth, no DB for the MVP
 - ADR-0004 — the visual direction
+- ADR-0005 — home flow mirrors trueflight.ca

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>True Alberta Roofing — home preview (Version B, TrueFlight flow)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+:root{
+  --page:#F8FAFC; --mist:#EEF3F8; --card:#FFFFFF; --ink:#0F172A;
+  --steel:#1E70B0; --steel-d:#175d94; --steel-l:#4EA8DE;
+  --body:#475569; --muted:#64748B; --line:#E2E8F0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;color:var(--body);background:var(--page);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Outfit','Inter',sans-serif;color:var(--ink);letter-spacing:-.02em;line-height:1.08}
+.wrap{max-width:1200px;margin:0 auto;padding:0 40px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:'Outfit';font-weight:700;font-size:15px;padding:13px 22px;border-radius:9px;cursor:pointer;border:0;text-decoration:none;transition:background .2s}
+.btn-primary{background:var(--steel);color:#fff}
+.btn-primary:hover{background:var(--steel-d)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.eyebrow{font-family:'Inter';font-weight:600;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--steel)}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:#334155;background:var(--mist);border:1px solid #dbe6f0;padding:7px 13px;border-radius:30px}
+.ico{width:18px;height:18px;flex:none;stroke:var(--steel);stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.section{padding:88px 0}
+.sec-head{max-width:680px;margin:0 auto 48px;text-align:center}
+.sec-head .eyebrow{display:block;margin-bottom:14px}
+.sec-head h2{font-size:40px;font-weight:800;margin-bottom:14px}
+.sec-head p{font-size:17px;color:var(--body)}
+
+/* promo bar (the "offer" like TrueFlight) */
+.promo{background:linear-gradient(90deg,var(--steel-d),var(--steel));color:#eaf4fb;font-size:14px;font-weight:500}
+.promo .wrap{display:flex;align-items:center;justify-content:center;gap:13px;height:44px;text-align:center}
+.promo .tag{background:rgba(255,255,255,.18);color:#fff;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+.promo b{color:#fff}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{display:flex;align-items:center;gap:11px;font-family:'Outfit';font-weight:800;font-size:20px;color:var(--ink);text-decoration:none}
+.brand .mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--steel),var(--steel-l));display:flex;align-items:center;justify-content:center}
+.brand .mark svg{width:20px;height:20px;stroke:#fff;stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.brand b{color:var(--steel)}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:#334155;text-decoration:none;font-weight:500;font-size:15px}
+.nav-links a:hover{color:var(--steel)}
+.nav-cta{display:flex;align-items:center;gap:18px}
+.nav-phone{font-family:'Outfit';font-weight:700;color:var(--ink);text-decoration:none;font-size:15px}
+.hamburger{display:none;align-items:center;justify-content:center;width:44px;height:44px;border:1.5px solid var(--line);border-radius:9px;background:#fff;cursor:pointer}
+.hamburger svg{width:22px;height:22px;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+
+/* hero */
+.hero{background:linear-gradient(180deg,#fff 0%,var(--page) 100%)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:80px}
+.hero h1{font-size:56px;font-weight:800;margin:18px 0 20px}
+.hero p.lead{font-size:19px;max-width:40ch;margin-bottom:30px}
+.hero .actions{display:flex;gap:14px;margin-bottom:28px}
+.hero .chips{display:flex;gap:10px;flex-wrap:wrap}
+.hero-photo{position:relative;height:440px;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(15,23,42,.35);border:1px solid rgba(255,255,255,.6)}
+.hero-photo .sky{position:absolute;inset:0;background:linear-gradient(165deg,#d6e8f6 0%,#a9cdea 42%,#7fb0d8 100%)}
+.hero-photo .roof{position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(120deg,#263341,#3c4a5a);clip-path:polygon(0 42%,100% 0,100% 100%,0 100%)}
+.hero-photo .seam{position:absolute;inset:0;background:repeating-linear-gradient(118deg,rgba(255,255,255,.12) 0 1.5px,transparent 1.5px 30px)}
+.hero-photo .tag{position:absolute;left:18px;bottom:18px;background:rgba(15,23,42,.62);color:#e6edf3;font-size:12px;padding:6px 12px;border-radius:8px}
+.hero-badge{position:absolute;top:18px;right:18px;background:#fff;border-radius:12px;padding:12px 16px;box-shadow:0 12px 28px -8px rgba(15,23,42,.4);text-align:center}
+.hero-badge b{font-family:'Outfit';font-weight:800;font-size:24px;color:var(--steel);display:block;line-height:1}
+.hero-badge span{font-size:11px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+/* value prop + services */
+.vp{background:var(--card)}
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.svc{background:var(--page);border:1px solid var(--line);border-radius:16px;padding:34px;transition:box-shadow .2s,transform .2s}
+.svc:hover{box-shadow:0 20px 40px -20px rgba(15,23,42,.25);transform:translateY(-3px)}
+.svc .icon{width:54px;height:54px;border-radius:13px;background:var(--mist);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.svc .icon svg{width:28px;height:28px;stroke:var(--steel);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.svc h3{font-size:22px;font-weight:700;margin-bottom:10px}
+.svc p{margin-bottom:16px;font-size:15.5px}
+.svc a{color:var(--steel);font-weight:600;text-decoration:none;font-size:15px;display:inline-flex;align-items:center;gap:6px}
+
+/* why trust us grid */
+.trust{background:var(--mist)}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px}
+.tcard .ti{width:46px;height:46px;border-radius:11px;background:var(--mist);display:flex;align-items:center;justify-content:center;margin-bottom:15px}
+.tcard .ti svg{width:24px;height:24px;stroke:var(--steel);stroke-width:1.9;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.tcard h3{font-size:18px;font-weight:700;margin-bottom:6px}
+.tcard p{font-size:14.5px}
+.trust-cta{text-align:center;margin-top:44px}
+
+/* portfolio */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.gal{aspect-ratio:4/3;border-radius:13px;overflow:hidden;position:relative;box-shadow:0 12px 26px -16px rgba(15,23,42,.4)}
+.gal .before,.gal .after{position:absolute;top:0;bottom:0;width:50%}
+.gal .before{left:0;background:linear-gradient(160deg,#8a97a5,#5f6c7b)}
+.gal .after{right:0;background:linear-gradient(160deg,#3a4a5c,#243040)}
+.gal .after .seam{position:absolute;inset:0;background:repeating-linear-gradient(120deg,rgba(255,255,255,.12) 0 1.5px,transparent 1.5px 22px)}
+.gal .lbl{position:absolute;bottom:9px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:rgba(15,23,42,.55);padding:3px 8px;border-radius:5px}
+.gal .lbl.b{left:9px}.gal .lbl.a{right:9px}
+.pgrid-cta{text-align:center;margin-top:40px}
+
+/* cta band */
+.cta{background:linear-gradient(120deg,var(--steel-d),var(--steel));color:#fff;text-align:center}
+.cta .wrap{padding:74px 40px}
+.cta h2{color:#fff;font-size:40px;font-weight:800;margin-bottom:14px}
+.cta p{color:#dcebf7;font-size:18px;margin-bottom:30px}
+.cta .btn-primary{background:#fff;color:var(--steel-d)}
+.cta .actions{display:flex;gap:14px;justify-content:center;align-items:center}
+.cta .call{color:#fff;font-family:'Outfit';font-weight:700;font-size:17px;text-decoration:none}
+
+/* footer */
+.foot{background:var(--ink);color:#94a3b8;padding:64px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.2fr;gap:40px}
+.foot .brand{color:#fff;margin-bottom:16px}
+.foot .brand b{color:var(--steel-l)}
+.foot p{font-size:14.5px;max-width:34ch}
+.foot h4{color:#fff;font-family:'Outfit';font-size:15px;margin-bottom:16px}
+.foot ul{list-style:none;display:grid;gap:10px}
+.foot a{color:#94a3b8;text-decoration:none;font-size:14.5px}
+.foot a:hover{color:#fff}
+.foot .hours{color:#cbd5e1;font-weight:600}
+.foot-bottom{border-top:1px solid #1e293b;margin-top:44px;padding-top:24px;display:flex;justify-content:space-between;font-size:13px;color:#64748b}
+
+@media (max-width:960px){
+  .wrap{padding:0 22px}
+  .section{padding:60px 0}
+  .hero .wrap{grid-template-columns:1fr;gap:34px;padding-top:48px;padding-bottom:56px}
+  .hero h1{font-size:42px}
+  .hero-photo{height:300px}
+  .trust-grid{grid-template-columns:repeat(2,1fr)}
+  .pgrid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media (max-width:640px){
+  .promo .wrap{gap:8px;font-size:12.5px;padding:0 14px}
+  .nav-links,.nav-phone,.nav-cta .btn-primary{display:none}
+  .hamburger{display:inline-flex}
+  .nav .wrap{height:64px}
+  .hero h1{font-size:33px}
+  .hero p.lead{font-size:17px}
+  .hero .actions{flex-direction:column;align-items:stretch}
+  .hero .actions .btn{justify-content:center}
+  .sec-head h2,.cta h2{font-size:28px}
+  .svc-grid{grid-template-columns:1fr}
+  .trust-grid{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr;gap:30px}
+  .foot-bottom{flex-direction:column;gap:8px;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- Promo / offer bar (placeholder — TrueFlight-style) -->
+<div class="promo"><div class="wrap">
+  <span class="tag">Limited time</span>
+  <span>Ask about our <b>current new-roof offer</b> when you book your free estimate &nbsp;·&nbsp; ☎ (403) 555-0142</span>
+</div></div>
+
+<!-- Nav -->
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#">
+    <span class="mark"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg></span>
+    True<b>Alberta</b>Roofing
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li><li><a href="#">Services</a></li>
+    <li><a href="#">Gallery</a></li><li><a href="#">About</a></li><li><a href="#">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a class="nav-phone" href="#">(403) 555-0142</a>
+    <a class="btn btn-primary" href="#">Free Estimate</a>
+    <button class="hamburger" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+  </div>
+</div></header>
+
+<!-- Hero: mission tagline -->
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="eyebrow">Family owned · Serving Calgary &amp; area</span>
+    <h1>Built by family.<br>Backed by 20 years.</h1>
+    <p class="lead">Asphalt shingles and custom standing seam metal, installed right the first time — by the same local crew for two decades.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="#">Get My Free Estimate
+        <svg class="ico" style="stroke:#fff" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+      <a class="btn btn-ghost" href="#">
+        <svg class="ico" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3-8.6A2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.3 1.8.6 2.6a2 2 0 01-.5 2.1L8.1 9.9a16 16 0 006 6l1.5-1.1a2 2 0 012.1-.5c.8.3 1.7.5 2.6.6a2 2 0 011.7 2z"/></svg>
+        Call (403) 555-0142</a>
+    </div>
+    <div class="chips">
+      <span class="chip"><svg class="ico" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Licensed &amp; insured</span>
+      <span class="chip"><svg class="ico" viewBox="0 0 24 24"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 17l-5.5 2.5 1-6.3L3 8.9 9 8z"/></svg>Workmanship warranty</span>
+      <span class="chip"><svg class="ico" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Free estimates</span>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <div class="sky"></div><div class="roof"><div class="seam"></div></div>
+    <div class="hero-badge"><b>20+</b><span>Years</span></div>
+    <div class="tag">Your project photo goes here</div>
+  </div>
+</div></section>
+
+<!-- Value prop + two services -->
+<section class="section vp"><div class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">Your roofing partner across Alberta</span>
+    <h2>Two services, done to a standard we put our family name on</h2>
+    <p>We keep the focus narrow so the quality stays high — shingles and custom metal, nothing we can't stand behind.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc">
+      <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6"/><path d="M5 9v10h14V9"/><path d="M8 19v-5h8v5"/></svg></div>
+      <h3>Asphalt Shingles</h3>
+      <p>Durable, cost-effective shingle roofs installed to last through Alberta hail, wind, and snow. Wide range of colors and profiles.</p>
+      <a href="#">Learn more <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="svc">
+      <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 20l4-16"/><path d="M10 20l4-16"/><path d="M16 20l4-16"/><path d="M3 20h18"/></svg></div>
+      <h3>Custom Standing Seam Metal</h3>
+      <p>Premium standing seam metal roofing, fabricated and fitted to your home. Clean lines, decades of life, and serious curb appeal.</p>
+      <a href="#">Learn more <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</div></section>
+
+<!-- Why trust us grid -->
+<section class="section trust"><div class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">Why homeowners choose us</span>
+    <h2>Why trust True Alberta Roofing</h2>
+  </div>
+  <div class="trust-grid">
+    <div class="tcard"><div class="ti"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M21 21v-2a4 4 0 00-3-3.9"/></svg></div><h3>Family owned &amp; operated</h3><p>You deal with the owners, start to finish — not a call center.</p></div>
+    <div class="tcard"><div class="ti"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div><h3>20+ years experience</h3><p>Two decades on Alberta roofs, now under our own name.</p></div>
+    <div class="tcard"><div class="ti"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg></div><h3>Licensed, insured &amp; WCB</h3><p>Fully covered on every job — no risk to you.</p></div>
+    <div class="tcard"><div class="ti"><svg viewBox="0 0 24 24"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div><h3>Honest, upfront pricing</h3><p>Clear written quotes — no surprise line items later.</p></div>
+    <div class="tcard"><div class="ti"><svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/><path d="M9 21h6"/><path d="M10 17v4"/><path d="M14 17v4"/></svg></div><h3>Built for Alberta weather</h3><p>Hail, wind, and deep-freeze ready, every install.</p></div>
+    <div class="tcard"><div class="ti"><svg viewBox="0 0 24 24"><path d="M12 2l3 6 6 .9-4.5 4.3 1 6.3L12 17l-5.5 2.5 1-6.3L3 8.9 9 8z"/></svg></div><h3>Workmanship warranty</h3><p>We stand behind every roof we put on.</p></div>
+  </div>
+  <div class="trust-cta"><a class="btn btn-primary" href="#">Get My Free Estimate
+    <svg class="ico" style="stroke:#fff" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+</div></section>
+
+<!-- Portfolio -->
+<section class="section"><div class="wrap">
+  <div class="sec-head">
+    <span class="eyebrow">Our work</span>
+    <h2>Before &amp; after</h2>
+    <p>Real roofs across Alberta. The client keeps this gallery updated themselves.</p>
+  </div>
+  <div class="pgrid">
+    <div class="gal"><div class="before"></div><div class="after"><div class="seam"></div></div><span class="lbl b">Before</span><span class="lbl a">After</span></div>
+    <div class="gal"><div class="before"></div><div class="after"><div class="seam"></div></div><span class="lbl b">Before</span><span class="lbl a">After</span></div>
+    <div class="gal"><div class="before"></div><div class="after"><div class="seam"></div></div><span class="lbl b">Before</span><span class="lbl a">After</span></div>
+    <div class="gal"><div class="before"></div><div class="after"><div class="seam"></div></div><span class="lbl b">Before</span><span class="lbl a">After</span></div>
+    <div class="gal"><div class="before"></div><div class="after"><div class="seam"></div></div><span class="lbl b">Before</span><span class="lbl a">After</span></div>
+    <div class="gal"><div class="before"></div><div class="after"><div class="seam"></div></div><span class="lbl b">Before</span><span class="lbl a">After</span></div>
+  </div>
+  <div class="pgrid-cta"><a class="btn btn-ghost" href="#">See all projects
+    <svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></a></div>
+</div></section>
+
+<!-- Repeated Free Estimate CTA -->
+<section class="cta"><div class="wrap">
+  <h2>Free estimates — no pressure, no obligation</h2>
+  <p>Book a visit and ask about our current new-roof offer.</p>
+  <div class="actions">
+    <a class="btn btn-primary" href="#">Get My Free Estimate</a>
+    <a class="call" href="#">or call (403) 555-0142</a>
+  </div>
+</div></section>
+
+<!-- Footer (hours prominent) -->
+<footer class="foot"><div class="wrap">
+  <div class="foot-grid">
+    <div>
+      <a class="brand" href="#"><span class="mark"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v9h14v-9"/></svg></span>True<b>Alberta</b>Roofing</a>
+      <p>Family-owned roofing serving Calgary and surrounding Alberta communities. Asphalt shingles and custom standing seam metal, done right.</p>
+    </div>
+    <div><h4>Company</h4><ul><li><a href="#">Home</a></li><li><a href="#">About</a></li><li><a href="#">Gallery</a></li><li><a href="#">Contact</a></li></ul></div>
+    <div><h4>Services</h4><ul><li><a href="#">Asphalt shingles</a></li><li><a href="#">Standing seam metal</a></li><li><a href="#">Free estimates</a></li></ul></div>
+    <div><h4>Get in touch</h4><ul>
+      <li><a href="#">☎ (403) 555-0142</a></li>
+      <li><a href="#">✉ hello@truealbertaroofing.ca</a></li>
+      <li>Calgary · Airdrie · Okotoks · Cochrane</li>
+      <li class="hours">Hours: Mon–Sat, 8am–6pm</li>
+    </ul></div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 True Alberta Roofing. All rights reserved.</span>
+    <span>Licensed &amp; insured · WCB covered</span>
+  </div>
+</div></footer>
+
+</body>
+</html>
