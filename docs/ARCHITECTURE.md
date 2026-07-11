@@ -1,7 +1,6 @@
 # Architecture
 
-Three pieces. The React app is the site. The Express API takes estimate requests and emails
-them. Sanity holds the photo gallery the client manages themselves.
+Three pieces. The React app is the site. The Express API takes estimate requests and emails them. Sanity holds the photo gallery the client manages themselves.
 
 ```
                  React frontend (Vite / TS)
@@ -14,18 +13,14 @@ them. Sanity holds the photo gallery the client manages themselves.
 ```
 
 The frontend doesn't hold any secrets or business logic beyond form handling and fetching.
-The backend only knows about leads — it never touches gallery content. Sanity runs its own
-login and storage, so we don't build any of that.
+The backend only knows about leads — it never touches gallery content. Sanity runs its own login and storage, so we don't build any of that.
 
 ## The two flows
 
-**Estimate request.** Form submits to `POST /api/estimates`. The API validates the body,
-drops obvious spam (honeypot field), then sends two emails through Resend: the lead to the
-business, and a "we got it" reply to the customer. Returns 201. There's no database — the
+**Estimate request.** Form submits to `POST /api/estimates`. The API validates the body, drops obvious spam (honeypot field), then sends two emails through Resend: the lead to the business, and a "we got it" reply to the customer. Returns 201. There's no database — the
 inbox is the record.
 
-**Gallery.** The client uploads before/after photos in Sanity Studio. The frontend queries
-published `project` documents from Sanity's CDN and renders them. The home page only shows
+**Gallery.** The client uploads before/after photos in Sanity Studio. The frontend queries published `project` documents from Sanity's CDN and renders them. The home page only shows
 the ones marked featured.
 
 ## Interfaces
