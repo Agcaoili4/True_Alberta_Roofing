@@ -1,11 +1,10 @@
-# 0005 — Home page flow: TrueFlight-matched option
+# 0005 — Home page flow: TrueFlight-matched (Version B)
 
-Proposed, 2026-07-10
+Accepted, 2026-07-11
 
-Not decided yet. We built two home-page mockups so the owner can compare and choose:
-Version A (our original flow) and Version B (this TrueFlight-matched flow). Both live in
-`docs/mockups/`. This ADR gets marked Accepted once the owner picks, and records whichever
-flow won.
+Decided: the client chose **Version B**, the TrueFlight-matched flow. We built two mockups to
+compare (both in `docs/mockups/`); Version A (our original, fuller flow) is kept there for
+reference but is not what we build.
 
 ## Context
 

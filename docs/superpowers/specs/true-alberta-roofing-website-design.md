@@ -49,12 +49,10 @@ docs/       specs, architecture, ADRs
 
 Pages:
 
-- `/` — home flow not final. Two candidate mockups are in `docs/mockups/` for the owner to
-  choose from (see ADR-0005):
-  - Version A (original): hero, services, why-us/family, gallery preview, process,
-    testimonials, CTA, footer.
-  - Version B (TrueFlight-matched): promo/offer bar, hero mission tagline, value prop + two
-    services, "why trust us" grid + CTA, before/after portfolio, repeated CTA, footer with hours.
+- `/` — Version B (TrueFlight-matched), chosen by the client (ADR-0005): promo/offer bar,
+  hero mission tagline, value prop + two services, "why trust us" grid + CTA, before/after
+  portfolio, repeated free-estimate CTA, footer with hours. No process or testimonials
+  section for launch. (Version A is kept in `docs/mockups/` for reference only.)
 - `/services` — asphalt and standing seam, in detail
 - `/gallery` — full before/after grid from Sanity
 - `/about` — the family and the 20 years
