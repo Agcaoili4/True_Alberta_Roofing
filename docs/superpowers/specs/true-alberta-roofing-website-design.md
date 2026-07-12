@@ -112,22 +112,30 @@ Notes:
 - Don't leak internal errors to the client; log them server-side.
 - Rate limiting and anything fancier on spam is post-MVP.
 
-## Sanity — the `project` type
+## Sanity — content types
 
-- `title`
-- `category` — `asphalt` or `standing-seam-metal`
-- `beforeImage`, `afterImage`
-- `location` — Alberta city
-- `featured` — show on the home preview
-- `order` — manual sort
+The client edits both text and photos in hosted Sanity Studio. We don't build the auth or
+uploads (ADR-0002); the editable scope is "curated key content" (ADR-0006). Content types:
 
-Client edits this in hosted Sanity Studio. We don't build the auth or the uploads (ADR-0002).
+- `siteSettings` (singleton) — business name, phone, email, service-area cities, hours,
+  promo/offer (text + on/off), social links
+- `homePage` (singleton) — hero eyebrow/headline/subhead/CTA label, value-prop heading + text
+- `service` — name, blurb, category (`asphalt` | `standing-seam-metal`), order
+- `testimonial` — quote, author, city, rating, featured, order
+- `aboutStory` (singleton) — the family / 20-years story (used on About + why-us)
+- `project` (gallery) — `title`, `category`, `beforeImage`, `afterImage`, `location`,
+  `featured` (show on home), `order`
 
-## Content in one place
+Sanity's Presentation tool gives click-on-the-page visual editing, so the client can edit a
+sentence on a live preview, not just in forms.
 
-Business facts and copy (phone, email, service-area cities, hours, the family story, service
-blurbs, placeholder testimonials) live in a single typed `content.ts`. Placeholders get a
-`TODO: review`. When real details show up, they change in one file instead of ten components.
+## Content split: Sanity vs code
+
+Client-editable copy and photos live in Sanity (above). Structural text the client shouldn't
+touch — nav labels, footer legal, form field labels, section scaffolding — stays in a typed
+`content.ts` in the frontend, which also holds sensible defaults/fallbacks if a CMS field is
+empty. Rule of thumb: if the owner would reasonably want to change it, it's in Sanity;
+if changing it would break layout or wording the developer owns, it's in code.
 
 ## The rest
 
@@ -168,3 +176,4 @@ Small steps, each one runnable before the next:
 - ADR-0003 — no auth, no DB for the MVP
 - ADR-0004 — the visual direction
 - ADR-0005 — home flow mirrors trueflight.ca
+- ADR-0006 — Sanity manages curated site content (text + images)
