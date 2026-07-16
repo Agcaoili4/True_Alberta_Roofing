@@ -11,7 +11,7 @@ type SectionHeadingProps = {
 
 export function SectionHeading({ eyebrow, title, sub, center  = false }: SectionHeadingProps){
     return (
-        <div className ={center ? 'text-center msc-w-2xl mx-auto' : ''}>
+        <div className ={center ? 'text-center max-w-2xl mx-auto' : ''}>
             { eyebrow && (
                 <p className="text-sm font-semibold uppercase tracking-[0.16em] text-steel mb-3">{eyebrow}</p>
             )}

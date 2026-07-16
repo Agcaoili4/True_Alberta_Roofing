@@ -8,7 +8,7 @@ type ContainerProps ={
 // Container component to wrap content with max width and padding
 export function Container({ children, className = ''}: ContainerProps){
     return (
-        <div className={`max-w-content px-6 md:px-10 ${className}`.trim()}>
+        <div className={`mx-auto max-w-content px-6 md:px-10 ${className}`.trim()}>
             {children}
         </div>
     );
