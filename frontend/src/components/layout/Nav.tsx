@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { site } from '../../content/site';
 import { Container } from '../ui/Container';
 import { Button } from '../ui/Button';
@@ -22,17 +23,17 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/90 backdrop-blur">
       <Container className="flex h-[74px] items-center justify-between">
-        <a href="/" className="flex items-center gap-3 font-head text-xl font-extrabold text-ink">
+        <Link to="/" className="flex items-center gap-3 font-head text-xl font-extrabold text-ink">
           <BrandMark />
           <span>True<span className="text-steel">Alberta</span>Roofing</span>
-        </a>
+        </Link>
 
         {/* Desktop links */}
         <nav className="hidden items-center gap-8 md:flex">
           {site.nav.map((item) => (
-            <a key={item.href} href={item.href} className="font-medium text-slate-700 transition-colors hover:text-steel">
+            <Link key={item.href} to={item.href} className="font-medium text-slate-700 transition-colors hover:text-steel">
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -63,14 +64,14 @@ export function Nav() {
         <div className="border-t border-line bg-white md:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {site.nav.map((item) => (
-              <a
+              <Link
                 key={item.href}
-                href={item.href}
+                to={item.href}
                 onClick={() => setOpen(false)}
                 className="py-2 font-medium text-slate-700"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
             <a href={`tel:${site.business.phone}`} className="py-2 font-head font-bold text-ink">
               {site.business.phone}

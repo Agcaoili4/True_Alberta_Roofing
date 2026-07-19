@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { site } from '../../content/site';
 import { Container } from '../ui/Container';
 
@@ -7,7 +8,7 @@ export function Footer() {
       <Container>
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.2fr]">
           <div>
-            <a href="/" className="mb-4 flex items-center gap-3 font-head text-xl font-extrabold text-white">
+            <Link to="/" className="mb-4 flex items-center gap-3 font-head text-xl font-extrabold text-white">
               <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-steel">
                 <svg viewBox="0 0 24 24" className="h-5 w-5 stroke-white" fill="none" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
                   <path d="M3 11l9-7 9 7" />
@@ -15,7 +16,7 @@ export function Footer() {
                 </svg>
               </span>
               <span>True<span className="text-steel-light">Alberta</span>Roofing</span>
-            </a>
+            </Link>
             <p className="max-w-xs text-sm">{site.footerNote}</p>
           </div>
 
@@ -23,7 +24,7 @@ export function Footer() {
             <h4 className="mb-4 font-head font-semibold text-white">Company</h4>
             <ul className="space-y-2 text-sm">
               {site.nav.map((item) => (
-                <li key={item.href}><a href={item.href} className="hover:text-white">{item.label}</a></li>
+                <li key={item.href}><Link to={item.href} className="hover:text-white">{item.label}</Link></li>
               ))}
             </ul>
           </div>
@@ -32,9 +33,9 @@ export function Footer() {
             <h4 className="mb-4 font-head font-semibold text-white">Services</h4>
             <ul className="space-y-2 text-sm">
               {site.services.map((s) => (
-                <li key={s.key}><a href="/services" className="hover:text-white">{s.name}</a></li>
+                <li key={s.key}><Link to="/services" className="hover:text-white">{s.name}</Link></li>
               ))}
-              <li><a href="/contact" className="hover:text-white">Free estimates</a></li>
+              <li><Link to="/contact" className="hover:text-white">Free estimates</Link></li>
             </ul>
           </div>
 
