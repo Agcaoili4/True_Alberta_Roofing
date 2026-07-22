@@ -29,7 +29,7 @@ export interface SiteContent{
     footerNote: string;
 }
 
-// The actual site content data
+// The actual site content dat
 export const site: SiteContent = {
     business: {
         name : 'True Alberta Roofing',
