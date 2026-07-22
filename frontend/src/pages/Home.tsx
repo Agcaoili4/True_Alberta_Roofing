@@ -1,11 +1,19 @@
-import { Container } from '../components/ui/Container';
+import { Hero } from '../components/sections/Hero';
+import { Services } from '../components/sections/Services';
+import { WhyTrust } from '../components/sections/WhyTrust';
+import { GalleryPreview } from '../components/sections/GalleryPreview';
+import { CtaBand } from '../components/sections/CtaBand';
 
-// Stub for now — the Version B home sections are built in Task 8.
+// Version B home flow (ADR-0005): hero -> value prop + services ->
+// why-trust grid -> before/after gallery -> repeated CTA.
 export function Home() {
   return (
-    <Container className="py-24">
-      <h1 className="text-4xl font-extrabold">Home</h1>
-      <p className="mt-3 text-body">The Version B home sections land here next.</p>
-    </Container>
+    <>
+      <Hero />
+      <Services />
+      <WhyTrust />
+      <GalleryPreview />
+      <CtaBand />
+    </>
   );
 }
