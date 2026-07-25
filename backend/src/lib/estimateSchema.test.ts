@@ -1,5 +1,6 @@
 import { expect, test } from 'vitest';
 import { estimateSchema } from './estimateSchema.js';
+import { email } from 'zod';
 
 // Object for containing entities
 const valid = { name: 'Sam', email: 'sam@example.ca', city: 'Calgary', serviceType: 'asphalt' };
@@ -33,9 +34,9 @@ test('reject if it is an invalid service type', () => {
 });
 
 test('rejects incorrect or malformed email', () => {
-    expect(estimateSchema.safeParse({ ...valid, serviceType:'example-but-no-email'}).success).toBe(false);
+    expect(estimateSchema.safeParse({ ...valid, email:'example-but-no-email'}).success).toBe(false);
 });
 
-test('rejects when service type is not specified', () => {
+test('accepts "not-sure" as a service type', () => {
     expect(estimateSchema.safeParse({ ...valid, serviceType:'not-sure'}).success).toBe(true)
 });
