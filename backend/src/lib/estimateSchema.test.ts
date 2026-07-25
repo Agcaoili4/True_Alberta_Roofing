@@ -35,3 +35,7 @@ test('reject if it is an invalid service type', () => {
 test('rejects incorrect or malformed email', () => {
     expect(estimateSchema.safeParse({ ...valid, serviceType:'example-but-no-email'}).success).toBe(false);
 });
+
+test('rejects when service type is not specified', () => {
+    expect(estimateSchema.safeParse({ ...valid, serviceType:'not-sure'}).success).toBe(false)
+});

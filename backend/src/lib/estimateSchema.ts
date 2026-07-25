@@ -4,7 +4,7 @@ import { z } from 'zod';
 export const estimateSchema = z.object({
     name: z.string().min(1),
     city: z.string().min(1),
-    serviceType: z.enum(['asphalt', 'standing-seam-metal', 'others']),
+    serviceType: z.enum(['asphalt', 'standing-seam-metal', 'not-sure']),
     email: z.string().email().optional(),
     phone: z.string().min(1).optional(),
     message: z.string().optional(),
