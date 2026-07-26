@@ -4,5 +4,15 @@ prompts/
 .superpowers/
 ui-ux-pro-max/
 
+# AI assistant / editor config (local, not for the repo)
+CLAUDE.md
+.windsurfrules
+.cursor/
+.superdesign/
+
+# OS / editor junk
+.DS_Store
+*.log
+
 #misc
 .env
