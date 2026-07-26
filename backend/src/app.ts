@@ -1,10 +1,12 @@
 import express from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
+import { createResendEmailer, type Emailer } from './lib/email.js';
+import { createEstimateService } from './services/estimateService.js';
+import { createEstimatesRouter } from './routes/estimates.js';
 
-// Builds the Express app: security + parsing middleware, then routes.
-// Kept as a factory so tests can create a fresh app (and later inject a fake emailer).
-export function createApp() {
+// Factory so tests can inject a fake emailer; production uses the real Resend one.
+export function createApp({ emailer = createResendEmailer() }: { emailer?: Emailer } = {}) {
   const app = express();
   app.use(helmet());
   app.use(cors());
@@ -13,6 +15,16 @@ export function createApp() {
   app.get('/health', (_req, res) => {
     res.json({ ok: true });
   });
+
+  const service = createEstimateService(emailer);
+  app.use('/api', createEstimatesRouter(service));
+
+  // Central error handler — log the detail, return a generic message (never leak internals).
+  const errorHandler: express.ErrorRequestHandler = (err, _req, res, _next) => {
+    console.error(err);
+    res.status(500).json({ ok: false, error: 'Something went wrong' });
+  };
+  app.use(errorHandler);
 
   return app;
 }
